@@ -1,0 +1,1 @@
+const fs=require('node:fs'),path=require('node:path');for(const dest of ['android/app/src/main/assets/www','ios/Still/www']){fs.mkdirSync(dest,{recursive:true});fs.cpSync('dist',dest,{recursive:true});}console.log('Shared UI copied to Android and iOS.');

@@ -1,0 +1,36 @@
+name: Still
+options:
+  bundleIdPrefix: com.still
+  deploymentTarget:
+    iOS: '16.0'
+settings:
+  base:
+    SWIFT_VERSION: '5.0'
+targets:
+  Still:
+    type: application
+    platform: iOS
+    sources:
+      - path: Still
+        excludes: [www]
+      - path: Still/www
+        type: folder
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.still.focus
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleDisplayName: Still
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        CODE_SIGN_ENTITLEMENTS: Still/Still.entitlements
+    dependencies:
+      - target: FocusMonitor
+  FocusMonitor:
+    type: app-extension
+    platform: iOS
+    sources: [FocusMonitor]
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.still.focus.monitor
+        CODE_SIGN_ENTITLEMENTS: FocusMonitor/FocusMonitor.entitlements
+        INFOPLIST_FILE: FocusMonitor/Info.plist
+        APPLICATION_EXTENSION_API_ONLY: YES
