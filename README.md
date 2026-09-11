@@ -4,6 +4,14 @@ A responsive website and shared-interface Android/iOS focus application. No acco
 
 ## Run the website
 
+### Named sessions and activity analysis
+
+Every new focus timer, break timer, and stopwatch needs a nonblank session/event name. The name is locked while that session is active. Pause/resume keeps the same session; Finish & save ends it. Reset also saves partial time as stopped instead of discarding it. Stopwatch laps are included in the saved session log.
+
+My activity includes running, paused, stopped, completed, and finished sessions. Filter by last 24 hours, last 7 days, last calendar month, last calendar year, any number of hours/days/weeks/months/years, custom date/time boundaries, or all time. Clock filters separate focus, breaks, and stopwatch. Chart intervals support hour/day/week/month/year; long ranges combine intervals to keep the chart readable. Reports include running-time totals, session count, average tracked time, completion status, time by session name, time by clock, and detailed records. Pauses are excluded and intervals crossing a filter boundary contribute only their time inside that range. Ongoing sessions update live. Exact chart values are available in a table.
+
+History remains device-local and does not sync between website, Android, and iOS installations. Earlier completed focus records are migrated without deletion and marked as estimated: their original timestamps did not capture pause intervals. New records retain precise running intervals. Previous stopwatch or stopped sessions that were never recorded cannot be recovered retroactively.
+
 With Node.js installed, run `npm run dev`, then open http://127.0.0.1:4173. Run `npm test` for timer behavior and `npm run check` for JavaScript syntax. The authored website is in `dist`; it needs no build or package installation.
 
 Features: focus timer, short breaks, 1–180 minute custom sessions, pause/resume/reset, stopwatch with laps, completion sound while the page is active, intention, device-local session history and daily totals, app selections, responsive layout and zen view. Background timing is computed from timestamps; browsers can suspend page execution, so completion sound/history update when execution resumes. No guaranteed background alarm is claimed.

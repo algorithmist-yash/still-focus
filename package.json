@@ -1,1 +1,1 @@
-{"name":"still-focus","version":"1.0.0","private":true,"scripts":{"dev":"node scripts/serve.cjs","test":"node --test tests/engine.test.cjs","check":"node --check dist/app.js && node --check dist/engine.js","sync:native":"node scripts/sync-native.cjs"}}
+{"name":"still-focus","version":"1.1.0","private":true,"scripts":{"dev":"node scripts/serve.cjs","test":"node --test tests/*.test.cjs","check":"node --check dist/app.js && node --check dist/engine.js && node --check dist/activity.js && node --check dist/activity-view.js","sync:native":"node scripts/sync-native.cjs"}}
