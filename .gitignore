@@ -3,6 +3,10 @@ node_modules/
 *.zip
 .DS_Store
 android/.gradle/
+android/.idea/
+*.jks
+*.keystore
+keystore.properties
 android/local.properties
 android/**/build/
 ios/*.xcodeproj/

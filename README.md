@@ -19,11 +19,11 @@ Features: focus timer, short breaks, 1–180 minute custom sessions, pause/resum
 ## Android
 
 1. Run `npm run sync:native` after changing the shared UI.
-2. Open `android` in Android Studio. Install SDK 35, use JDK 17 and Gradle 8.9 (a global Gradle install can generate the wrapper with `gradle wrapper --gradle-version 8.9`).
+2. Open `android` in Android Studio. Install SDK 36 and use JDK 17 or a compatible configured JDK. The committed Gradle 8.11.1 wrapper works with Android Gradle plugin 8.10.1; use `gradlew.bat` on Windows.
 3. Sync and run on an Android 8+ device. Create a signed release using your own keystore when ready.
 4. In App limits, tap Set up device blocking, read the disclosure, enable Still's Accessibility service, return, and select installed apps.
 
-The service observes foreground package names only, never window content. It returns to Home when a selected app opens during a running focus session. Settings, this app, Home and common phone packages are excluded. Pause/reset clears enforcement; the deadline is checked on every event, even if the UI is closed. This is a voluntary focus aid: the user can disable the service, and OEM behavior and notifications may offer ways around restrictions. Real-device testing and store accessibility-policy review are required before release.
+The service observes foreground package names only, never window content. It displays a native countdown blocking screen when a selected app opens during focus, with Home and Return to Still controls. Settings, Still, Home, the default dialer and essential phone services are excluded. Pause/reset clears enforcement. Native deadlines include sleep and expire independently of the interface; restrictions release after reboot. This is a voluntary focus aid: users can disable the service, and OEM behavior may offer ways around restrictions. Real-device testing and store accessibility-policy review are required before release. See `android/TESTING.md` and `docs/android-release.md` for verification and release steps.
 
 ## iOS
 
@@ -36,7 +36,7 @@ ManagedSettings shields selected apps/categories/domains during focus. DeviceAct
 
 ## Delivery status and verification
 
-The web app is runnable. Native source projects are included; APK/IPA binaries are not built or signed in this Windows workspace, which lacks Android SDK/Gradle and cannot run Xcode. Do not represent these projects as store-ready or device-tested. Mobile store listings, accounts, certificates, and publication are not included.
+The web app is runnable. The Android debug app has been built and tested in an emulator; the user confirmed timer blocking works after the permission-detection fix. Android release preparation, branding, contact information, and build automation are in this repository. Physical-device testing, production upload signing, Play declarations and approval are still required. The iOS project remains deferred and unbuilt. Store accounts, production signing keys, certificates, and publication are not included. See `docs/android-release.md` for the remaining steps.
 
 The web app cannot enumerate or block installed apps. Its app list is explicitly a planning selection; actual blocking is only enabled in native builds with permission. No extension-based website blocking is included. Data is not synchronized across devices. Clearing site/app data deletes local progress.
 
